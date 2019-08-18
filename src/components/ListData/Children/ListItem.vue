@@ -6,7 +6,7 @@
     <picture class="data-list__item__avatar">
       <img alt="Avatar Default" src="@/assets/img/person.svg" />
     </picture>
-    <div class="data-list__item__content">
+    <form class="data-list__item__content">
       <div class="data-list__item__content__title">
        <input
           v-model="item.voice"
@@ -31,7 +31,7 @@
           :class="{ 'plan-text': !showTextVoice }"
         ></textarea-autosize>
       </div>
-    </div>
+    </form>
     <div class="delete-item">
       <button 
         @click.prevent="deleteItem" 

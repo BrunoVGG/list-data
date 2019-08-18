@@ -3,12 +3,12 @@ import ListData from '@/components/ListData/';
 const routes = [
     {
       path: '/',
-      redirect: { name: 'list-data' }
+      redirect: { name: 'transcriptions' }
     },
     {
-      path: '/list-data',
+      path: '/transcriptions',
       component: ListData,
-      name: 'list-data'
+      name: 'transcriptions'
     }
   ]
   
