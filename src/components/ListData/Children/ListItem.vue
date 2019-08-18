@@ -146,13 +146,13 @@ export default {
   margin-bottom: 3px;
   min-height: 60px;
   background-color: $white;
-  padding: 20px 0 20px 20px;
+  padding: 30px 0 20px 20px;
   margin-left: 10px;
   margin-right: 10px;
   display: flex;
 
   @media screen and (min-width: $screen-md) {
-    padding: 20px 0 20px 30px;
+    padding: 30px 0 20px 30px;
   }
 
   .delete-item {
@@ -179,7 +179,8 @@ export default {
     align-content: center;
     justify-items: center;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 8px;
 
     @media screen and (max-width: $screen-sm) {
       width: 35px;
@@ -192,7 +193,7 @@ export default {
     align-content: center;
     justify-items: center;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     @media screen and (max-width: $screen-sm) {
       width: 35px;
