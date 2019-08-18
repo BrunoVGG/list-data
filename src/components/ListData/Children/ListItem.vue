@@ -8,13 +8,11 @@
     </picture>
     <div class="data-list__item__content">
       <div class="data-list__item__content__title">
-        <div v-show="!showEditVoice" @click.prevent="toEditMode('voice')">{{ item.voice }}</div>
-        <input
-          v-show="showEditVoice"
+       <input
           v-model="item.voice"
+          @focus="toEditMode({ref:'voice'})"
           @blur="doneEdit('voice')"
-          @keydown.enter.prevent="doneEdit({ref:'voice', setFocus: true})"
-          @keyup.esc.prevent="doneEdit('voice')"
+          :class="{ 'plan-text': !showEditVoice }"
           ref="voice"
           type="text"
           max="50"
@@ -28,7 +26,7 @@
           v-model="item.text"
           :min-height="20"
           :max-height="350"
-          @click.native="toEditMode({ref:'text'})"
+          @focus.native="toEditMode({ref:'text'})"
           @blur.native="doneEdit('text')"
           :class="{ 'plan-text': !showTextVoice }"
         ></textarea-autosize>
@@ -119,6 +117,7 @@ export default {
     ]),
     // Set edit mode to selected element
     toEditMode({ ref = 'voice', setFocus = false }) {
+      debugger
       this.editMode[ref] = true;
       if (setFocus) this.setFocus(ref);
     },
@@ -130,6 +129,7 @@ export default {
     },
     // When the user leave the field
     doneEdit(ref = 'voice') {
+      debugger
       this.editMode[ref] = false;
     },
     deleteItem() {
@@ -210,7 +210,7 @@ export default {
 
     &__title {
       text-align: left;
-      padding: 5px 10px;
+      padding: 0 10px;
       color: $gray-650;
       font-weight: bold;
       font-family: "Montserrat", sans-serif, Arial, Helvetica;
