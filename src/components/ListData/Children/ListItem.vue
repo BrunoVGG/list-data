@@ -117,7 +117,6 @@ export default {
     ]),
     // Set edit mode to selected element
     toEditMode({ ref = 'voice', setFocus = false }) {
-      debugger
       this.editMode[ref] = true;
       if (setFocus) this.setFocus(ref);
     },
@@ -129,7 +128,6 @@ export default {
     },
     // When the user leave the field
     doneEdit(ref = 'voice') {
-      debugger
       this.editMode[ref] = false;
     },
     deleteItem() {
