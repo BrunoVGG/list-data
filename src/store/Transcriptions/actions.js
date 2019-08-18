@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Actions = {
   // Get transcriptions form server
   getTranscriptions({ dispatch }) {
