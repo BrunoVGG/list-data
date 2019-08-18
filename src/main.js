@@ -6,11 +6,13 @@ import App from './App.vue'
 import routes from "./routes/routes";
 import store from "./store/";
 import VueTextareaAutosize from 'vue-textarea-autosize'
-import "vue-loading-overlay/dist/vue-loading.css";
+import 'vue-loading-overlay/dist/vue-loading.css';
+import Notifications from 'vue-notification'
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
-Vue.use(VueTextareaAutosize)
+Vue.use(VueTextareaAutosize);
+Vue.use(Notifications);
 
 window.axios = axios;
 

@@ -11,10 +11,8 @@ const Mutations = {
 
     state.transcriptions.push(newItem);
   },
-  updateDataItem(state, translate) {
-    let itemData = state.data.find((item) => {
-        return item.id = translate.id
-    });
+  deleteTranscriptions(state, index) {
+    state.transcriptions.splice(index, 1)
   }
 }
 

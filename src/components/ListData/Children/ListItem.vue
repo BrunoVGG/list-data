@@ -1,5 +1,5 @@
 <template>
-  <li class="data-list__item">
+  <li class="data-list__item" role="listitem">
     <div class="data-list__item__checkarea">
       <CheckboxCustom v-model="checked" :name="`checkbox-${item.id}`" />
     </div>
@@ -35,7 +35,11 @@
       </div>
     </div>
     <div class="delete-item">
-      <button @click.prevent="deleteItem" class="btn-simple">
+      <button 
+        @click.prevent="deleteItem" 
+        data-message="Delete transcription"
+        class="btn-simple"
+      >
         <i class="ico-delete"></i>
       </button>
     </div>
@@ -43,11 +47,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import CheckboxCustom from "@/components/CheckboxCustom/";
-import { debuglog } from "util";
+import { mapState, mapActions } from 'vuex';
+import CheckboxCustom from '@/components/CheckboxCustom/';
+
 export default {
-  name: "ListItem",
+  name: 'ListItem',
   components: {
     CheckboxCustom
   },
@@ -70,14 +74,8 @@ export default {
       required: true
     }
   },
-  mounted() {
-    if (!this.item.id) {
-      this.editMode.voice = true;
-      this.editMode.text = true;
-    }
-  },
   computed: {
-    ...mapState("transcriptions", ["transcriptions"]),
+    ...mapState('transcriptions', ['transcriptions']),
     dataList: {
       get() {
         return this.transcriptions;
@@ -91,7 +89,7 @@ export default {
         return this.item;
       },
       set(newValue) {
-        this.$emit("update:item", newValue);
+        this.$emit('update:item', newValue);
       }
     },
     showEditVoice() {
@@ -107,27 +105,35 @@ export default {
       return false;
     }
   },
+  mounted() {
+    if (!this.item.id) {
+      this.editMode.voice = true;
+      this.editMode.text = true;
+    }
+  },
   methods: {
-    ...mapActions("transcriptions", [
-      "updateTranscriptions",
-      "deleteTranscriptions",
-      "setTranscriptions"
+    ...mapActions('transcriptions', [
+      'updateTranscriptions',
+      'deleteTranscriptions',
+      'setTranscriptions'
     ]),
-    toEditMode({ ref = "voice", setFocus = false }) {
+    // Set edit mode to selected element
+    toEditMode({ ref = 'voice', setFocus = false }) {
       this.editMode[ref] = true;
-
       if (setFocus) this.setFocus(ref);
     },
-    setFocus(ref = "voice") {
+    // Focus element
+    setFocus(ref = 'voice') {
       const element = this.$refs[ref];
-      element.style.display = "block";
+      element.style.display = 'block';
       element.focus();
     },
-    doneEdit(ref = "voice") {
+    // When the user leave the field
+    doneEdit(ref = 'voice') {
       this.editMode[ref] = false;
     },
     deleteItem() {
-      this.$emit("on-delete");
+      this.$emit('on-delete');
     }
   }
 };

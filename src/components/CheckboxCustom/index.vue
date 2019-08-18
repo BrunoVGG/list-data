@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "CheckboxCustom",
+  name: 'CheckboxCustom',
   props: {
     name: {
       type: String,
@@ -17,7 +17,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import "src/assets/css/patterns.scss";
 
